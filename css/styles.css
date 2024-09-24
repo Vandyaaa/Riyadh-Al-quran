@@ -494,6 +494,7 @@ a {
     width: 100%;
     color: var(--9);
     z-index: 1;
+    padding-bottom: 50px;
 }
 
 #loadingview {
