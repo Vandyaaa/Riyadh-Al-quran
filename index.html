@@ -22,7 +22,7 @@
   
   <link rel="stylesheet" href="../style.css">
   <link href="css/styles.css" rel="stylesheet">
-
+  
 </head>
 
 <body>
@@ -70,9 +70,11 @@
         <div class="container-fluid">
           <div class="lodd" id="loadingview"></div>
         </div>
-        <h1 class="mt-4" id="surahtitle" style="text-align: center;">
-        
-        </h1>
+        <div class="h1-effct">
+          <h1 class="mt-4" id="surahtitle" style="text-align: center;">
+          
+          </h1>
+        </div>
         
         <div id="surah" style="margin: 20;"></div>
         
@@ -88,9 +90,51 @@
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+<script src="https://unpkg.com/scrollreveal"></script>
   <!-- Menu Toggle Script -->
   <script>
+      const bawah = ScrollReveal({
+
+          distance: '40px',
+          duration: 1000,
+          opacity: 0,
+          origin: 'bottom',
+          reset: true,
+        })
+        bawah.reveal('.logone', {})
+        bawah.reveal('.surt', {})
+        bawah.reveal('.mt-4', {})
+        bawah.reveal('#kecil', { distance: '0px', })
+        bawah.reveal('#sedang', { distance: '0px', })
+        bawah.reveal('#besar', { distance: '0px', })
+
+
+        const atas = ScrollReveal({
+
+          distance: '40px',
+          duration: 1000,
+          opacity: 0,
+          origin: 'top',
+          reset: true,
+        })
+        atas.reveal('.logo-headere', {})
+        atas.reveal('.menu-al', {})
+        atas.reveal('#headere p', {})
+
+        const kiriqu = ScrollReveal({
+
+            distance: '40px',
+            duration: 1000,
+            opacity: 0,
+            origin: 'left',
+            reset: true,
+          })
+          kiriqu.reveal('.or', {})
+
+
+
+
+
     function buka() {
         var silang = document.getElementById("silang");
         silang.classList.toggle("silang");
@@ -301,22 +345,9 @@
   }
 
 
-// Memanggil fungsi pencarian saat input pencarian berubah
-// document.getElementById("search-input").addEventListener("input", myFunction);
-
-//   document.addEventListener("DOMContentLoaded", function () {
-//     var paragraphs = document.querySelectorAll('.icon-name');
-//     paragraphs.forEach(function (paragraph) {
-//       var text = paragraph.innerHTML;
-//       var newText = text.replace(/\b(\d+)\b/g, '<span>$1</span>');
-//       paragraph.innerHTML = newText;
-//     });
-//   });
 
 
 
-
-  
 
   </script>
 
