@@ -93,7 +93,19 @@
 <script src="https://unpkg.com/scrollreveal"></script>
   <!-- Menu Toggle Script -->
   <script>
+    
 
+
+
+    function buka() {
+        var silang = document.getElementById("silang");
+        silang.classList.toggle("silang");
+      }
+      
+    $("#menu-toggle").click(function (e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
 
 
 
