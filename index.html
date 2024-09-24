@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Al-Quran JSON Indonesia Kemenag">
+  <link rel="shortcut icon" href="../asset/LOGO.png" type="image/x-icon">
+  <meta name="author" content="iqbalsyamhad">
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+
+  <title>Al-Quran JSON Indonesia Kemenag</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/simple-sidebar.css" rel="stylesheet">
+
+  <!-- Other custom styles -->
+  
+  <link rel="stylesheet" href="../style.css">
+  <link href="css/styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+    
+    <!-- Sidebar -->
+    <div class="or" id="sidebar-wrapper">
+
+      <div class="sidebar-heading">
+        
+      </div>
+      <div class="setting">
+        <div class="ukuran-font">
+          <div id="kecil" type="button" value="Kecil"><i class="fi fi-br-text-size"></i></div>
+          <div id="sedang" type="button" value="Sedang"><i class="fi fi-br-text-size"></i></div>
+          <div id="besar" type="button" value="Besar"><i class="fi fi-br-text-size"></i></div>
+        </div>
+      </div>
+      <input type="number" id="searchInput" placeholder="Masukkan Nomor Surat" autocomplete="off"  oninput="filterItems()">
+      <div class="list-group list-group-flush side" id="sidenav">
+  
+      </div>
+    </div>
+    
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <header id="headere">
+      <div class="logo-headere">
+        <img src="asset/fa-dark.png" alt="">
+      </div>
+      <p>Al-Quran</p>
+      <div class="menu-al" id="menu-toggle" onclick="buka()">
+        
+          <div class="menu-sil" id="silang">
+            <div class="baris1-al" id="baris1"></div>
+            <div class="baris3-al" id="baris3"></div>
+          </div>
+      </div>
+    </header>
+    
+      <section class="jumbotron">
+        <img class="logone" src="asset/fa-dark.png" alt="">
+        <div class="container-fluid">
+          <div class="lodd" id="loadingview"></div>
+        </div>
+        <h1 class="mt-4" id="surahtitle" style="text-align: center;">
+        
+        </h1>
+        
+        <div id="surah" style="margin: 20;"></div>
+        
+      </section>
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+
+  </div>
+
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    function buka() {
+        var silang = document.getElementById("silang");
+        silang.classList.toggle("silang");
+      }
+      
+    $("#menu-toggle").click(function (e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+
+
+
+
+
+
+//     document.addEventListener("DOMContentLoaded", function() {
+//     var fontSizeInput = document.getElementById("font-size");
+//     var fontSizeDisplay = document.getElementById("font-size-display");
+//     var text = document.getElementsByTagName("p");
+
+//     fontSizeInput.addEventListener("input", function() {
+//         var fontSize = fontSizeInput.value;
+//         fontSizeDisplay.textContent = fontSize;
+//         text.style.fontSize = fontSize + "px";
+//         text.style.color = "red"
+//     });
+// });
+
+
+//     document.addEventListener("DOMContentLoaded", function() {
+//     var fontSizeInput = document.getElementById("font-size");
+//     var fontSizeDisplay = document.getElementById("font-size-display");
+//     var text = document.querySelectorAll(".div-surat #ayattext p");
+
+
+//     fontSizeInput.addEventListener("input", function() {
+//         var fontSize = fontSizeInput.value;
+//         fontSizeDisplay.textContent = fontSize;
+//         text.style.fontSize = fontSize + "px";
+//     });
+// });
+
+    
+
+    var baseurl = 'https://raw.githubusercontent.com/iqbalsyamhad/Al-Quran-JSON-Indonesia-Kemenag/master/';
+    var isLoading = document.getElementById("loadingview");
+    (function () {
+      fetch(baseurl + 'Daftar%20Surat.json')
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (json) {
+          var navContainer = document.getElementById("sidenav");
+          var listGroupItems = []
+          for (var i = 0; i < json.data.length; i++) {
+            var div = document.createElement("div");
+            div.classList.add("surt");
+            
+            div.innerHTML = '<a class="list-group-item" id="grubitem" style="cursor: pointer;" onclick="getSurat(\'' + json.data[i].id + '\', \'' + json.data[i].surat_name.replace(/[^\w\s]/gi, '') + '\')">' + '<p id="text" class="icon-name">' + '<span class="aidi">' + json.data[i].id + '</span>' + '. Surat ' + json.data[i].surat_name + '</p>' + '</a>';
+            
+            div.onclick = function () {
+              $("#menu-toggle").click();
+            };
+            listGroupItems.push(div.firstChild);
+            navContainer.appendChild(div);
+
+            div.addEventListener("click", function() {
+          // Mengubah warna latar belakang menjadi hijau
+          this.firstChild.style.backgroundColor = "var(--1)";
+          this.firstChild.style.color = "var(--8)";
+          this.firstChild.style.transition = ".2s";
+          this.firstChild.style.scale = "1";
+          
+
+          // Mengatur ulang warna latar belakang list-group-item yang lain
+          for (var j = 0; j < listGroupItems.length; j++) {
+            if (listGroupItems[j] !== this.firstChild) {
+              listGroupItems[j].style.backgroundColor = "transparent";
+              listGroupItems[j].style.color = "var(--7)";
+              listGroupItems[j].style.scale = "1";
+              
+
+            }
+          }
+        })
+      }
+    })
+      .catch(function (err) {
+      alert('error: ' + err);
+    });
+    })();
+    function getSurat(id, title) {
+      isLoading.innerHTML = '<div class="spinner-border text-primary" role="status"><span class="sr-only"></span>'
+      // document.getElementById("surahtitle").innerHTML = title;
+      document.getElementById("surahtitle").innerHTML = title + '<div class="down-link" href="#surah">Scroll Down</i></div>';
+     var c = document.getElementById("surahtitle");
+      var mainContainer = document.getElementById("surah");
+      
+      mainContainer.innerHTML = '';
+      fetch(baseurl + 'Surat/' + id + '.json')
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          for (var i = 0; i < data.data.length; i++) {
+            var div = document.createElement("div");
+            div.setAttribute("id", "divsurat"); 
+            div.className = "div-surat";
+            div.innerHTML = '<p class="text arabic pull-right"><span class="badge badge-primary">' + data.data[i].aya_number + '</span> ' + data.data[i].aya_text + '</p><p class="text terjemah" style="">' + data.data[i].translation_aya_text + '</p>';
+            mainContainer.appendChild(div);
+          }
+          isLoading.innerHTML = ''
+        })
+        .catch(function (err) {
+          alert('error: ' + err);
+        });
+    }
+
+
+
+    function changeColor(index) {
+  var listGroupItems = document.querySelectorAll('.list-group-item');
+  // Mengubah warna latar belakang menjadi hijau
+  listGroupItems[index].style.backgroundColor = "var(--5)";
+
+  
+
+  // Mengatur ulang warna latar belakang list-group-item yang lain
+  for (var i = 0; i < listGroupItems.length; i++) {
+    if (i !== index) {
+      listGroupItems[i].style.backgroundColor = "transparent";
+    }
+  }
+}
+
+
+
+    
+    // Mendefinisikan fungsi pencarian
+    function myFunction() {
+      var input, filter, surt, a, i;
+      input = document.getElementById("mySearch");
+      filter = input.value.toUpperCase();
+      surt = document.querySelectorAll(".list-group-item");
+
+      for (i = 0; i < surt.length; i++) {
+        a = surt[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          surt[i].style.display = "";
+        } else {
+          surt[i].style.display = "none";
+        }
+      }
+    }
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+    var kecilButton = document.getElementById("kecil");
+    var sedangButton = document.getElementById("sedang");
+    var besarButton = document.getElementById("besar");
+
+    kecilButton.addEventListener("click", function() {
+        ubahUkuranFont("kecil");
+    });
+
+    sedangButton.addEventListener("click", function() {
+        ubahUkuranFont("sedang");
+    });
+
+    besarButton.addEventListener("click", function() {
+        ubahUkuranFont("besar");
+    });
+
+    function ubahUkuranFont(ukuran) {
+        var divSurat = document.querySelectorAll(".div-surat");
+
+        divSurat.forEach(function(div) {
+            var teksArabic = div.querySelector(".text.arabic.pull-right");
+            var teksTerjemah = div.querySelector(".text.terjemah");
+
+            if (ukuran === "kecil") {
+                teksArabic.style.fontSize = "16px";
+                teksTerjemah.style.fontSize = "16px";
+            } else if (ukuran === "sedang") {
+                teksArabic.style.fontSize = "22px";
+                teksTerjemah.style.fontSize = "22px";
+            } else if (ukuran === "besar") {
+                teksArabic.style.fontSize = "30px";
+                teksTerjemah.style.fontSize = "30px";
+            }
+        });
+    }
+});
+
+
+  function filterItems() {
+    const input = document.getElementById('searchInput').value;
+    const items = document.querySelectorAll('.list-group-item');
+
+    items.forEach(item => {
+      const id = item.querySelector('.aidi').textContent;
+      if (id === input || input === '') {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+
+
+// Memanggil fungsi pencarian saat input pencarian berubah
+// document.getElementById("search-input").addEventListener("input", myFunction);
+
+//   document.addEventListener("DOMContentLoaded", function () {
+//     var paragraphs = document.querySelectorAll('.icon-name');
+//     paragraphs.forEach(function (paragraph) {
+//       var text = paragraph.innerHTML;
+//       var newText = text.replace(/\b(\d+)\b/g, '<span>$1</span>');
+//       paragraph.innerHTML = newText;
+//     });
+//   });
+
+
+
+
+  
+
+  </script>
+
+</body>
+
+</html>
