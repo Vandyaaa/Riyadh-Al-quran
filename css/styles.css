@@ -91,7 +91,7 @@ body {
 }
 
 .container-fluid .spinner-border {
-    border-color: red;
+    border-color: rgb(151, 81, 0);
     border-top: none;
     position: relative;
 }
@@ -506,6 +506,7 @@ a {
     left: 50%;
     width: 50px;
     height: 50px;
+    translate: -50% 50%;
 }
 
 .badge {

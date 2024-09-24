@@ -93,57 +93,7 @@
 <script src="https://unpkg.com/scrollreveal"></script>
   <!-- Menu Toggle Script -->
   <script>
-      const bawah = ScrollReveal({
 
-          distance: '40px',
-          duration: 1000,
-          opacity: 0,
-          origin: 'bottom',
-          reset: true,
-        })
-        bawah.reveal('.logone', {})
-        bawah.reveal('.surt', {})
-        bawah.reveal('.mt-4', {})
-        bawah.reveal('#kecil', { distance: '0px', })
-        bawah.reveal('#sedang', { distance: '0px', })
-        bawah.reveal('#besar', { distance: '0px', })
-
-
-        const atas = ScrollReveal({
-
-          distance: '40px',
-          duration: 1000,
-          opacity: 0,
-          origin: 'top',
-          reset: true,
-        })
-        atas.reveal('.logo-headere', {})
-        atas.reveal('.menu-al', {})
-        atas.reveal('#headere p', {})
-
-        const kiriqu = ScrollReveal({
-
-            distance: '40px',
-            duration: 1000,
-            opacity: 0,
-            origin: 'left',
-            reset: true,
-          })
-          kiriqu.reveal('.or', {})
-
-
-
-
-
-    function buka() {
-        var silang = document.getElementById("silang");
-        silang.classList.toggle("silang");
-      }
-      
-    $("#menu-toggle").click(function (e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
 
 
 
