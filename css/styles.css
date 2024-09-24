@@ -1,0 +1,481 @@
+@font-face {
+    font-family: arabicfont;
+    src: url("../asset/Poppins-Medium.ttf");
+}
+
+:root {
+    --1: #bd68ee;
+    --2: #;
+    --3: #F5DD90;
+    --4: #212121;
+    --5: #9fffcb;
+    --6: #1F1F1F;
+    --7: #d1d1d1;
+    --8: #161616;
+    --9: #eeeeff;
+}
+
+body{
+    height: 100vh;
+    overflow: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--1);
+    transition: .5s;
+    border-radius: 25px 0px 0px 25px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--5);
+}
+
+::selection {
+    background-color: var(--1);
+    color: var(--6);
+}
+
+#page-content-wrapper{
+        
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-attachment: fixed;
+}
+
+#headere {
+    width: 100%;
+    height: 75px;
+    padding: 0px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+    background-color: var(--6);
+    transition: .3s;
+    z-index: 1000;
+}
+
+.container-fluid .spinner-border{
+    border-color: var(--5);
+    position: relative;
+}
+
+.spinner-border::after{
+    content: "";
+    background-color: var(--8);
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(7px);
+}
+
+.iyako {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    background-color: transparent;
+}
+
+
+.iyako button {
+    height: 50px;
+    width: 80px;
+    display: grid;
+    justify-content: center;
+    place-items: center;
+    border-radius: 100px;
+    position: relative;
+    border: 2px solid #313131;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background: var(--4);
+    outline: none;
+}
+
+button p {
+    color: var(--7);
+    transition: .5s;
+}
+
+.iyako .text {
+    display: flex;
+    font-size: 12px;
+    flex-direction: row;
+}
+
+.iyako .text i {
+    font-size: 8px;
+    margin-right: 5px;
+    transform: translateY(3px);
+}
+
+.icon-name{
+    margin: 0;
+}
+
+@media (min-width:600px) {
+    header{
+        flex-direction: row-reverse;
+    }
+    .menu{
+        display: block;
+    }
+}
+
+.menu-al {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+}
+
+.boxeh-al {
+    height: 40px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.pos2-al {
+    width: 90%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background: transparent;
+    overflow: hidden;
+}
+
+.baris1-al,
+.baris2-al,
+.baris3-al {
+    width: 25px;
+    height: 3px;
+    display: block;
+    position: absolute;
+    border-radius: 50px;
+    transition: .5s;
+}
+
+.baris1-al {
+    transform: rotate(0deg) translateY(-8px);
+    background-color: var(--7);
+}
+
+.baris2-al {
+    transform: translateX(0px);
+    background-color: var(--7);
+    
+}
+
+.baris3-al {
+    transform: translateX(0px) translateY(8px);
+    background-color: var(--7);
+    
+}
+
+
+#silang.silang .baris1-al {
+    transform: translateY(0px) translateY(-8px);
+    background-color: var(--7);
+}
+
+#silang.silang .baris2-al {
+    transform: translateX(0px);
+    width: 16px;
+}
+
+#silang.silang .baris3-al {
+    transform: translateY(0px) translateY(8px);
+    background-color: var(--7);
+    width: 8px;
+}
+
+.kembali:hover{
+    color: var(--7);
+    text-decoration: none;
+}
+
+.text{
+    text-underline-offset: none;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.kembali:hover text{
+    text-decoration: none;
+}
+
+.kembali i {
+    font-size: 13px;
+    transform: translateY(1px);
+}
+
+.kembali p{
+    position: relative;
+    transform: translateY(7px);
+}
+
+a{
+    text-decoration: none;
+}
+
+.search{
+    width: 100%;
+}
+
+#nothing-alert{
+    display: none;
+    text-align: center;
+}
+
+#search-input{
+    width: 100%;
+    border: none;
+    height: 50px;
+    padding: 10px;
+}
+
+.arabic {
+    text-align: right;
+    font-family: arabicfont;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+#divsurat{
+    background-color: var(--4);
+    border-radius: 20px;
+    margin-bottom: 10px;
+    padding: 27px;
+    width: 100%;
+    
+}
+
+/* CSS untuk kelas "kecil" */
+#divsurat p.kecil {
+    font-size: 16px;
+    color: red;
+}
+
+/* CSS untuk kelas "sedang" */
+.div-surat p.sedang {
+    font-size: 22px;
+}
+
+/* CSS untuk kelas "besar" */
+.div-surat p.besar {
+    font-size: 30px;
+}
+
+.surt{
+    color: var(--7);
+}
+
+.sr-only{
+    color: var(--5);
+}
+
+@keyframes aa {
+    0%{
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+.list-group-item{
+    background-color: var(--4);
+    color: var(--9);
+    padding: 30px 10px 30px 30px;
+    margin-bottom: 10px;
+    overflow-y: hidden;
+    border-radius: 20px;
+}
+
+.list-group{
+    overflow-y: auto;
+    position: fixed;
+    height: calc(69vh );
+    width: 100%;
+    position: relative;
+    padding: 0px 20px 0px 20px;
+}
+
+.list-group::-webkit-scrollbar{
+    display: none;
+}
+
+@media (max-width:600px) {
+    .list-group{
+        position: fixed;
+        width: 100%;
+        height: 70vh;
+        margin: 0;
+        padding: 0px 20px 0px 20px;
+    }
+}
+
+
+a{
+    background-color: var(--5);
+}
+
+.jumbotron{
+    width: 100%;
+    height: calc(100vh);
+    background-color: var(--8);
+    color: var(--5);
+    padding-top: 100px;
+    overflow: auto;
+    z-index: .5;
+}
+
+.jumbotron img{
+    position: absolute;
+    width: 40%;
+    opacity: .5;
+    z-index: .5;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+@media (max-width:600px) {
+    .jumbotron img{
+        width: 70%;
+    }
+}
+
+.mt-4{
+    
+}
+
+#surah{
+    background-color: var(--8);
+    padding-top: 30px;
+    overflow: auto;
+    width: 100%;
+    color: var(--9);
+    z-index: 1;
+}
+
+#loadingview{
+    color: var(--1);
+}
+
+.badge{
+    background-color: var(--1);
+    color: var(--9  );
+}
+
+.btn{
+    background-color: var(--bgcolor);
+    border: none;
+    color: var(--cyan);
+}
+
+.navbar{
+    height: 100px;
+    position: fixed;
+    width: 100%;
+}
+
+.or{
+    height: 100vh;
+    position: relative;
+    z-index: 100;
+    overflow: hidden;
+    border-right: 0px solid transparent;
+    background-color: var(--8);
+    border-right: 3px solid var(--6);
+}
+
+.or::-webkit-scrollbar{
+    display: none;
+}
+
+
+
+
+@media (max-width: 768px) {
+    .or{
+        position: fixed;
+        margin-top: 100px;
+    }
+}
+
+.or::-webkit-scrollbar{
+    width: 0px;
+}
+
+.or::-webkit-scrollbar-track{
+    background-color: var(--1);
+}
+
+.nav-item{
+    background-color: var(--second);
+    color: var(--second);
+    z-index: 100;
+    border-radius: 5px;
+}
+
+#grubitem{
+    border-radius: 10px;
+}
+
+.setting h1{
+    font-size: 10px;
+}
+
+.setting .ukuran-font{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px;
+    gap: 20px;
+}
+
+.setting .ukuran-font div{
+    width: 100%;
+    height: 50px;
+    display: grid;
+    place-items: center;
+    background-color: var(--6);
+    color: var(--7);
+    border-radius: 20px;
+}
+
+.setting .ukuran-font div:focus-visible{
+    background-color: var(--1);
+}
+
+.setting .ukuran-font div:nth-child(1){
+    font-size: 12px;
+}
+
+.setting .ukuran-font div:nth-child(2){
+    font-size: 18px;
+}
+
+.setting .ukuran-font div:nth-child(3){
+    font-size: 24px;
+}

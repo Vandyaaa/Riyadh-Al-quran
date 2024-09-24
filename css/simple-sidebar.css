@@ -1,0 +1,131 @@
+/*!
+ * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/templates/simple-sidebar)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-simple-sidebar/blob/master/LICENSE)
+ */
+
+ @font-face {
+  font-family: pop;
+  src: url(../asset/Poppins-Medium.ttf);
+ }
+
+ *{
+  font-family: pop;
+ }
+
+ #wrapper {
+    overflow-x: hidden;
+    transition: .8s;
+ }
+
+    #wrapper.toggled{
+      background-color: var(--8);
+    }
+
+    #wrapper.toggled .jumbotron{
+      background-color: var(--8);
+    }
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: 0rem;
+  width: 100%;
+  height: 100vh;
+  margin-top: 70px;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+}
+
+@media (max-width:600px) {
+  #sidebar-wrapper {
+    position: fixed;
+  }
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0px 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  height: 115px;
+  color: var(--5);
+  width: 100%;
+}
+
+.tali{
+  width: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 100px;
+  background-color: var(--4);
+  position: relative;
+  transform: translateY(-20px);
+  animation: ngoeng 3s linear infinite;
+  margin-right: 20px;
+}
+
+.tali::after{
+  content: "";
+  width: 50px;
+  height: 50px;
+  border-radius: 100px;
+  background-color: rgba(245, 221, 144, .6);
+  animation: ngoeng2 3s linear infinite;
+  position: absolute;
+  z-index: .5;
+}
+
+@keyframes ngoeng {
+  50%{
+    transform: translateY(-40px);
+    background-color: rgba(245, 221, 144, .2);
+  }
+}
+
+@keyframes ngoeng2 {
+  50% {
+    background-color: rgba(245, 221, 144, .2);
+  }
+}
+
+#sidebar-wrapper .sidebar-heading .tali img{
+  width: 50px;
+  transform: translateY(-5px);
+  position: absolute;
+  z-index: 1;
+}
+
+#sidebar-wrapper .list-group {
+  width: -15rem;
+  overflow: auto;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: -100%;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0rem;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -100%;
+  }
+}
