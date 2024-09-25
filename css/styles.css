@@ -377,13 +377,13 @@ a {
 }
 
 #divsurat {
-    background-color: var(--6);
+    background-color: var(--4);
     border-radius: 20px;
     margin-bottom: 10px;
     padding: 27px;
     width: 100%;
     z-index: 2;
-
+    color: var(--1);
 }
 
 /* CSS untuk kelas "kecil" */
@@ -399,9 +399,27 @@ a {
 
 /* CSS untuk kelas "besar" */
 .div-surat p.besar {
-    font-size: 30px;
+    font-size: 10px;
 }
 
+#kecil,
+#sedang,
+#besar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#kecil p,
+#sedang p,
+#besar p {
+    font-size: 10px;
+    margin: 0;
+}
+
+#kecil i, #sedang i, #besar i{
+    font-size: 16px;
+}
 .surt {
     color: var(--7);
 }
@@ -511,7 +529,7 @@ a {
 
 .badge {
     background-color: var(--1);
-    color: var(--9);
+    color: var(--4);
 }
 
 .btn {
@@ -568,6 +586,7 @@ a {
 #grubitem {
     border-radius: 10px;
 }
+
 
 .setting h1 {
     font-size: 10px;

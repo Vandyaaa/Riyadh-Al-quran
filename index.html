@@ -37,9 +37,10 @@
       </div>
       <div class="setting">
         <div class="ukuran-font">
-          <div id="kecil" type="button" value="Kecil"><i class="fi fi-br-text-size"></i></div>
-          <div id="sedang" type="button" value="Sedang"><i class="fi fi-br-text-size"></i></div>
-          <div id="besar" type="button" value="Besar"><i class="fi fi-br-text-size"></i></div>
+          <div id="kecil" type="button" value="Kecil"><p>16px</p></div>
+          <div id="sedang" type="button" value="Sedang"><p>22px</p></div>
+          <div id="besar" type="button" value="Besar"><p>30px</p></div>
+          <div id="arabe" type="button" value="Arabe"><i class="fi fi-br-text-slash"></i></div>
         </div>
       </div>
       <input type="number" id="searchInput" placeholder="Masukkan Nomor Surat" autocomplete="off"  oninput="filterItems()">
@@ -188,32 +189,36 @@
       alert('error: ' + err);
     });
     })();
-    function getSurat(id, title) {
-      isLoading.innerHTML = '<div class="spinner-border text-primary" role="status"><span class="sr-only"></span>'
-      // document.getElementById("surahtitle").innerHTML = title;
-      document.getElementById("surahtitle").innerHTML = title + '<div class="down-link" href="#surah">Scroll Down</i></div>';
-     var c = document.getElementById("surahtitle");
-      var mainContainer = document.getElementById("surah");
-      
-      mainContainer.innerHTML = '';
-      fetch(baseurl + 'Surat/' + id + '.json')
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (data) {
-          for (var i = 0; i < data.data.length; i++) {
-            var div = document.createElement("div");
-            div.setAttribute("id", "divsurat"); 
-            div.className = "div-surat";
-            div.innerHTML = '<p class="text arabic pull-right"><span class="badge badge-primary">' + data.data[i].aya_number + '</span> ' + data.data[i].aya_text + '</p><p class="text terjemah" style="">' + data.data[i].translation_aya_text + '</p>';
-            mainContainer.appendChild(div);
-          }
-          isLoading.innerHTML = ''
-        })
-        .catch(function (err) {
-          alert('error: ' + err);
-        });
-    }
+  function getSurat(id, title) {
+    isLoading.innerHTML = '<div class="spinner-border text-primary" role="status"><span class="sr-only"></span>';
+    document.getElementById("surahtitle").innerHTML = title + '<div class="down-link" href="#surah">Scroll Down</div>';
+
+    var mainContainer = document.getElementById("surah");
+    mainContainer.innerHTML = '';
+
+    fetch(baseurl + 'Surat/' + id + '.json')
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        for (var i = 0; i < data.data.length; i++) {
+          var div = document.createElement("div");
+          div.setAttribute("id", "divsurat");
+          div.className = "div-surat";
+
+          // Bersihkan tag <p> dari translation_aya_text jika ada
+          var cleanTranslation = data.data[i].translation_aya_text.replace(/<\/?p>/g, '');
+
+          div.innerHTML = '<p class="text arabic pull-right"><span class="badge badge-primary">' + data.data[i].aya_number + '</span> ' + data.data[i].aya_text + '</p><h6 class="text terjemah">' + cleanTranslation + '</h6>';
+          mainContainer.appendChild(div);
+        }
+        isLoading.innerHTML = '';
+      })
+      .catch(function (err) {
+        alert('error: ' + err);
+      });
+  }
+
 
 
 
@@ -235,28 +240,29 @@
 
 
     
-    // Mendefinisikan fungsi pencarian
-    function myFunction() {
-      var input, filter, surt, a, i;
-      input = document.getElementById("mySearch");
-      filter = input.value.toUpperCase();
-      surt = document.querySelectorAll(".list-group-item");
+    // // Mendefinisikan fungsi pencarian
+    // function myFunction() {
+    //   var input, filter, surt, a, i;
+    //   input = document.getElementById("mySearch");
+    //   filter = input.value.toUpperCase();
+    //   surt = document.querySelectorAll(".list-group-item");
 
-      for (i = 0; i < surt.length; i++) {
-        a = surt[i].getElementsByTagName("a")[0];
-        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-          surt[i].style.display = "";
-        } else {
-          surt[i].style.display = "none";
-        }
-      }
-    }
+    //   for (i = 0; i < surt.length; i++) {
+    //     a = surt[i].getElementsByTagName("a")[0];
+    //     if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+    //       surt[i].style.display = "";
+    //     } else {
+    //       surt[i].style.display = "none";
+    //     }
+    //   }
+    // }
 
 
     document.addEventListener("DOMContentLoaded", function() {
     var kecilButton = document.getElementById("kecil");
     var sedangButton = document.getElementById("sedang");
     var besarButton = document.getElementById("besar");
+    var arabSaja = document.getElementById("arabe");
 
     kecilButton.addEventListener("click", function() {
         ubahUkuranFont("kecil");
@@ -268,6 +274,10 @@
 
     besarButton.addEventListener("click", function() {
         ubahUkuranFont("besar");
+    });
+
+    arabSaja.addEventListener("click", function() {
+        ubahUkuranFont("arabe");
     });
 
     function ubahUkuranFont(ukuran) {
@@ -286,6 +296,9 @@
             } else if (ukuran === "besar") {
                 teksArabic.style.fontSize = "30px";
                 teksTerjemah.style.fontSize = "30px";
+            } else if (ukuran === "arabe") {
+                teksArabic.style.fontSize = "50px";
+                teksTerjemah.style.fontSize = "0px";
             }
         });
     }
