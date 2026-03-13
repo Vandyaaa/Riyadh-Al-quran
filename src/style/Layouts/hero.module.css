@@ -1,0 +1,78 @@
+@import url(../../global.css);
+
+.heroSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100svh;
+    background-color:var(--secondary);
+    background-image:
+    radial-gradient(var(--cl1) 9px, transparent 10px),
+    repeating-radial-gradient(var(--cl1) 0, var(--cl1) 4px, transparent 5px, transparent 20px, var(--cl1) 21px, var(--cl1) 25px, transparent 26px, transparent 50px);
+    background-size: 30px 30px, 90px 90px;
+    background-position: 0 0;
+    position: relative;
+}
+
+.heroSection::before {
+    content: "";
+    clip-path: polygon(100% 0, 100% 100%, 75% 100%, 0% 100%, 0 0, 50% 50%);
+    background: linear-gradient(0deg, var(--secondary) 0%, transparent 100%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 25vh;
+}
+
+.heroText {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.heroText h1 {
+    font-size: 3rem;
+    font-family: var(--font-title);
+}
+
+.heroText h1 span {
+    font-style: italic;
+    color: var(--cl2);
+}
+
+.heroText p {
+    font-size: 1rem;
+    max-width: 500px;
+}
+
+.heroText button {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    place-items: center;
+    background-color: var(--cl3);
+    border-radius: 0.5rem;
+    font-weight: normal;
+    font-style: italic; 
+    font-size: 1rem;
+    border: none;
+    font-family: var(--font-title);
+    color: var(--light);
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    border: 2px solid var(--border);
+}
+
+.heroText button span {
+    height: 2.5rem;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1/1;
+    background-color: var(--secondary);
+    color: var(--light);
+    border-radius: 0.5rem;
+}

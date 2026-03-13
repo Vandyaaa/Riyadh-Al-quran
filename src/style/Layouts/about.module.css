@@ -1,0 +1,32 @@
+.about_section{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.about_section .con_text_about {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.about_section h1 {
+    font-size: 3rem;
+    font-family: var(--font-title);
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
+}
+
+.about_section span {
+    color: var(--cl2);
+    font-style: italic;
+}
+
+.about_section p {
+    max-width: 500px;
+}
+
+.about_section img {
+    flex: 1;
+    max-width: 40%;
+}

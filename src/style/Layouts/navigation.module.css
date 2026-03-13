@@ -1,0 +1,57 @@
+@import url(../../global.css);
+
+.navigation {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 70px;
+    max-width: 1000px;
+    gap: 0.5rem;
+    background-color: rgba(49, 49, 49, 0.5);
+    backdrop-filter: blur(20px);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    z-index: 999;
+}
+
+.navigation .logo {
+    height: 100%;
+    aspect-ratio: 1/1;
+    background-color: var(--primary);
+    border-radius: 0.5rem;
+    display: grid;
+    place-items: center;
+    color: black;
+}
+
+.navigation ul {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+    height: 100%;
+}
+
+.navigation ul li {
+    display: grid;
+    place-items: center;
+    padding: 0.5rem 1rem;
+    background: var(--cl1);
+    border-radius: 0.5rem;
+    height: 100%;
+}
+
+.navigation .login {
+    height: auto;
+    background-color: var(--light);
+    border-radius: 0.5rem;
+    width: fit-content;
+    color: var(--dark);
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}

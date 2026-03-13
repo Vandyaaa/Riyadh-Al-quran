@@ -1,0 +1,118 @@
+@import url(../../global.css);
+
+.section_grid_view {
+    height: 100vh;
+}
+
+.section_grid_view ul {
+    display: grid;
+    grid-template-columns: 1fr;
+    list-style: none;
+    gap: 1rem;
+}
+
+.section_grid_view ul li {
+    padding: 0;
+    position: relative;
+    background-color: var(--cl1);
+    height: fit-content;
+    position: sticky;
+    padding: 3rem;
+    border-radius: 2rem;
+    border: 2px solid var(--border);
+}
+
+.section_grid_view ul li span {
+    font-size: 2rem;;
+    font-weight: bold;
+    opacity: 1;
+    /* position: absolute; */
+    left: 0;
+    top: 0;
+    color: var(--primary);
+    
+    display: block;
+    width: 70px;
+    display: block;
+}
+
+.section_grid_view ul li span::before {
+    content: '';
+    width: 30px;
+    height: calc(3rem + 2px);
+    position: absolute;
+    background-color: rgb(255, 34, 34);
+    clip-path: polygon(100% 0, 100% 100%, 50% 70%, 0 100%, 0 0);
+    right: 3rem;
+    top: -2px;
+}
+
+.section_grid_view ul li:nth-child(odd) {
+    background-color: var(--cl3);
+}
+
+.section_grid_view ul li:nth-child(1) {
+    top: calc(1rem);
+}
+
+.section_grid_view ul li:nth-child(2) {
+    top: calc(30px + 1rem);
+}
+
+.section_grid_view ul li:nth-child(3) {
+    top: calc(30px * 2 + 1rem);
+}
+
+.section_grid_view ul li:nth-child(4) {
+    top: calc(30px * 3 + 1rem);
+}
+
+
+.section_grid_view ul li:nth-child(5) {
+    top: calc(30px * 4 + 1rem);
+}
+
+.section_grid_view ul li:nth-child(6) {
+    top: calc(30px * 5 + 1rem);
+}
+
+.section_grid_view ul li h2 {
+    font-family: var(--font-title);
+    margin-bottom: 1rem;
+    font-size: 4rem;
+    font-style: italic;
+    color: var(--light);
+}
+
+.section_grid_view .li_title_and_link {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+}
+
+.section_grid_view .li_title_and_link .li_link {
+    height: 100px;
+    aspect-ratio: 1/1;
+    background-color: var(--border);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    align-self: flex-end;
+    color: var(--light);
+}
+
+.section_grid_view .li_title_and_link .li_link svg {
+    height: 3rem;
+    width: 3rem;
+}
+
+.section_grid_view img {
+    width: 80%;
+    height: 100%;
+    margin-top: 3rem;
+    object-fit: cover;
+    object-position: top;
+    border: 2px solid var(--border);
+    border-radius: 2rem;
+    display: none;
+}
